@@ -1,0 +1,416 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title> Login and Registration Form in HTML & CSS </title>
+
+  <!-- Fontawesome CDN Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/static/login1.png");
+    padding: 30px;
+  }
+
+  .container {
+    position: relative;
+    max-width: 850px;
+    width: 100%;
+    background: #fff;
+    padding: 40px 30px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    perspective: 2700px;
+  }
+
+  .container .cover {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 50%;
+    z-index: 98;
+    transition: all 1s ease;
+    transform-origin: left;
+    transform-style: preserve-3d;
+  }
+
+  .container .cover::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #be0e0e;
+    opacity: 0.5;
+    z-index: 100;
+  }
+
+  .container .cover::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #c02a2a;
+    opacity: 0.5;
+    z-index: 100;
+    transform: rotateY(180deg);
+  }
+
+  .container #flip:checked~.cover {
+    transform: rotateY(-180deg);
+  }
+
+  .container .cover img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 12;
+    backface-visibility: hidden;
+  }
+
+  .container .cover .back .backImg {
+    transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+
+  .container .cover .text {
+    position: absolute;
+    z-index: 111;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cover .text .text-1,
+  .cover .text .text-2 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    backface-visibility: hidden;
+  }
+
+  .cover .back .text .text-1,
+  .cover .back .text .text-2 {
+    transform: rotateY(180deg);
+  }
+
+  .cover .text .text-2 {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .container .forms {
+    height: 100%;
+    width: 100%;
+    background: #fff;
+  }
+
+  .container .form-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .form-content .login-form,
+  .form-content .signup-form {
+    width: calc(100% / 2 - 25px);
+  }
+
+  .forms .form-content .title {
+    position: relative;
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .forms .form-content .title:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 25px;
+    background: #c91f1f;
+  }
+
+  .forms .signup-form .title:before {
+    width: 20px;
+  }
+
+  .forms .form-content .input-boxes {
+    margin-top: 30px;
+  }
+
+  .forms .form-content .input-box {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    margin: 10px 0;
+    position: relative;
+  }
+
+  .form-content .input-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 0 30px;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .form-content .input-box input:focus,
+  .form-content .input-box input:valid {
+    border-color: #c91f1f;
+  }
+
+  .form-content .input-box i {
+    position: absolute;
+    color: #c91f1f;
+    font-size: 17px;
+  }
+
+  .forms .form-content .text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .forms .form-content .text a {
+    text-decoration: none;
+  }
+
+  .forms .form-content .text a:hover {
+    text-decoration: underline;
+  }
+
+  .forms .form-content .button {
+    color: #fff;
+    margin-top: 20px;
+  }
+
+  .forms .form-content .button input {
+    color: #fff;
+    background: #c91f1f;
+    border-radius: 6px;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  .forms .form-content .button input:hover {
+    background: #c91f1f;
+  }
+
+  .forms .form-content label {
+    color: #c91f1f;
+    cursor: pointer;
+  }
+
+  .forms .form-content label:hover {
+    text-decoration: underline;
+  }
+
+  .forms .form-content .login-text,
+  .forms .form-content .sign-up-text {
+    text-align: center;
+    margin-top: 25px;
+  }
+
+  .container #flip {
+    display: none;
+  }
+
+  .input-box-dob {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+
+  }
+
+  .input-box-dob label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+
+
+  }
+
+  .input-box-dob input {
+    height: 100%;
+
+    outline: none;
+    border: none;
+    padding: 10px 30px;
+    font-size: 15px;
+
+    font-weight: 500;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    text-decoration: underline;
+    border-color: #c91f1f;
+
+  }
+
+  .input-box-gender {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    margin: 20px 0;
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #c91f1f;
+
+  }
+
+  .input-box-gender input {
+    margin: 0 20px;
+
+    color: #c91f1f;
+
+
+
+
+  }
+
+
+
+
+  @media (max-width: 730px) {
+    .container .cover {
+      display: none;
+    }
+
+    .form-content .login-form,
+    .form-content .signup-form {
+      width: 100%;
+    }
+
+    .form-content .signup-form {
+      display: none;
+    }
+
+    .container #flip:checked~.forms .signup-form {
+      display: block;
+    }
+
+    .container #flip:checked~.forms .login-form {
+      display: none;
+    }
+  }
+</style>
+
+<body>
+  <br>
+  <br>
+  <br>
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+        <img src="/static/frontImg.jpg" alt="">
+        <div class="text">
+          <span class="text-1">Every new friend is a <br> new adventure</span>
+          <span class="text-2">Let's get connected</span>
+        </div>
+      </div>
+      <div class="back">
+        <img class="backImg" src="/static/backImg.jpg" alt="">
+        <div class="text">
+          <span class="text-1">Complete miles of journey <br> with one step</span>
+          <span class="text-2">Let's get started</span>
+        </div>
+      </div>
+    </div>
+    <div class="forms">
+      <div class="form-content">
+        <div class="login-form">
+          <div class="title">Login</div>
+          <form action="/handlogin" method="post">
+            {% csrf_token %}
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" id="logusername" name="logusername" placeholder="Enter your Usernme" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="logpass" name="logpass" placeholder="Enter your password" required>
+              </div>
+              <div class="text"><a href="#">Forgot password?</a></div>
+              <div class="button input-box">
+                <input type="submit" value="Sumbit">
+              </div>
+              <div class="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label></div>
+            </div>
+          </form>
+        </div>
+        <div class="signup-form">
+          <div class="title">Signup</div>
+          <form action="/log" method="post">
+            {% csrf_token %}
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" name="username" placeholder="Enter your name" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password1" name="password1" placeholder="Enter your password" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password2" name="password2" placeholder="Confirm your password" required>
+              </div>
+              <div class="input-box-dob">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob">
+              </div>
+              {% comment %} <div class="input-box-gender" id="sex" name="sex">
+                <input type="radio" name="gender" id="m" name="m" value="male"> Male<br>
+                <input type="radio" name="gender" id="f" name="f" value="female"> Female<br>
+                <input type="radio" name="gender" id="o" name="o" value="other"> Other {% endcomment %}
+                {% comment %}
+              </div> {% endcomment %}
+
+              <div class="button input-box">
+                <input type="submit" value="submit">
+              </div>
+              <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

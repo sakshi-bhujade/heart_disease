@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+{% endblock head %}
+{% block css %}
+body{
+background: #fec107;
+padding: 0 20 px;
+
+}
+
+h1{
+text-align:center;
+background-color:white;
+}
+nav
+{
+overflow: auto;
+}
+p{
+text-align:left;
+background-color:white;
+
+}
+
+
+{% endblock css %}
+{% block body %}
+<div style="background-color: rgb(220, 66, 66); height: 100vh; text-align: center; padding: 50px ;">
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+
+
+    <h1 style="background-color: aliceblue; border-radius: 10px;">{{x}}</h1>
+
+    <!-- <div class="suggestion">
+        <br>
+        <br>
+        <h2>Suggestion</h2>
+
+        <p style="background-color: aliceblue; border-radius: 5px; text-align: left;">{{t}}<br></p>
+        <br>
+        <h2>Diet</h2>
+        <p style="background-color: aliceblue;border-radius: 5px;">{{u}}<br></p>
+        <br>
+        <h2>Lifestyle Modification</h2>
+        <p style="background-color: aliceblue;border-radius: 5px;">{{v}}<br></p>
+        <br>
+        <h2>Prescibed Medicines</h2>
+        <p style="background-color: aliceblue;border-radius: 5px;">{{w}}<br></p>
+
+    </div>
+</div>  -->
+
+
+
+    <div style="background-color: rgb(220, 66, 66); padding: 20px;">
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center;">
+
+            <div style="flex: 1; padding: 20px;">
+                <h2>Suggestion</h2>
+                <p style="background-color: aliceblue; border-radius: 10px; padding: 20px;">{{ t }}</p>
+                <br>
+                <br>
+
+                <h2>Diet</h2>
+                <p style="background-color: aliceblue; border-radius: 10px; padding: 20px;">{{ u }}</p>
+            </div>
+
+            <div style="flex: 1; padding: 20px;">
+                <h2>Prescribed Medicines</h2>
+                <p style="background-color: aliceblue; border-radius: 10px; padding: 20px;">{{ w }}</p>
+                <br>
+                <br>
+
+                <h2>Lifestyle Modification</h2>
+                <p style="background-color: aliceblue; border-radius: 10px; padding: 20px;">{{ v }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    {% endblock body %}

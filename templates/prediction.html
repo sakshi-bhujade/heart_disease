@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block head %}
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="{% static 'css/form2.css' %}">
+<link rel="stylesheet" href="{% static 'css/predstyle.css' %}">
+<title>Form</title>
+
+
+{% endblock head %}
+{% block css %}
+
+
+
+
+{% endblock css %}
+{% block body %}
+<br>
+<br>
+<br>
+<div class="heading">
+  <h1>
+    Know your chances of having a heart disease &#9825
+  </h1>
+
+</div>
+<div class="wrapper">
+
+
+  <div class="title">Risk Predictor</div>
+
+  <div class="/form">
+    <form action="result">
+      <div class="inputfield">
+        <label for="trestbps">Age</label><br>
+        <input type="number" name="age" required="required" placeholder="age" class="input" id="age">
+      </div>
+
+      <div class="inputfield">
+        <label for="sex">sex</label>
+        <div class="custom_select">
+          <select class="form-control" id="sex" name="sex" required="required" class="input">
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+
+          </select>
+        </div>
+      </div>
+
+      <div class="inputfield">
+        <label for=" cp">Chest Pain Type</label>
+        <div class="custom_select">
+          <select class="form-control" id="cp" name="cp" required="required" placeholder="Chest Pain Type">
+            <option value="0">Typical Angina</option>
+            <option value="1">Atypical Angina</option>
+            <option value="2">Non-Anginal Pain</option>
+            <option value="3">Asymptomatic</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="inputfield">
+        <label for="trestbps">Resting Blood Pressure (in mm Hg)</label><br>
+        <input type="number" name="trestbps" required="required" placeholder="Resting Blood Pressure" class="input"
+          id="trestbps">
+      </div>
+
+      <div class="inputfield">
+        <label for="chol">Serum Cholestoral in mg/dl</label><br>
+        <input type="number" name="chol" required="required" placeholder="Serum Cholestoral" class="input" id="chol">
+      </div>
+
+
+      <div class="inputfield">
+        <label for="fbs">Fasting Blood Sugar</label>
+        <div class="custom_select">
+
+          <select id="fbs" name="fbs" required="required" placeholder="Fasting Blood Sugar">
+            <option value="0">Fasting Blood Sugar < 120 mg/dl</option>
+            <option value="1">Fasting Blood Sugar > 120 mg/dl</option>
+          </select>
+
+        </div>
+      </div>
+
+      <div class="inputfield">
+        <label for="restecg">Resting Electro-cardiographic Result</label>
+        <div class="custom_select">
+          <select class="form-control" type="number" name="restecg" required="required"
+            placeholder="Resting Electro-cardiographic Result" id="restecg">
+            <option value="0">Normal</option>
+            <option value="1">having ST-T wave abnormality</option>
+            <option value="2">showing probable or definite left ventricular hypertrophy</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="inputfield">
+        <label for="thalach">Maximum Heart Rate Achieved</label><br>
+        <input name="thalach" required="required" class="input" id="thalach">
+      </div>
+
+      <div class="inputfield">
+        <label for="exang">Exercise Induced Angina</label>
+        <div class="custom_select">
+          <select class="form-control" id="exang" name="exang" required="required" class="input">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+
+          </select>
+        </div>
+      </div>
+      <div class="inputfield">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
+          type="submit" class="btn" id="submit-button">Predict</button>
+      </div>
+    </form>
+  </div>
+  <link rel="stylesheet" href="{% static 'javascript/prediction.jsx' %}">
+  <script src="{% static 'javascript/prediction.jsx' %}"></script>
+  {% endblock body %}
